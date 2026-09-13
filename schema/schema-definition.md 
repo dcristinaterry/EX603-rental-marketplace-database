@@ -1,0 +1,40 @@
+direction TB
+	Renter {
+		int renter_id PK ""  
+		varchar first_name  ""  
+		varchar last_name  ""  
+		varchar address  ""  
+	}
+
+	viewing {
+		int viewing_id PK ""  
+		int renter_id FK ""  
+		int property_id FK ""  
+		timestamp viewing_time  ""  
+		int number_attendees  ""  
+		int duration_min  ""  
+	}
+
+	Property {
+		int property_id PK ""  
+		varchar name  ""  
+		varchar address  ""  
+    boolean is_available
+	}
+
+	amenities {
+		int amenity_id PK ""  
+		varchar name  ""  
+		int size  ""  
+		varchar description  ""  
+	}
+
+	listing_amenities {
+		int amenity_id PK,FK ""  
+		int property_id PK,FK ""  
+	}
+
+	Renter}|--o{viewing:"  "
+	Property}|--o{viewing:"  "
+	Property}|--o{listing_amenities:"  "
+	amenities}|--o{listing_amenities:"  "
