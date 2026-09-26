@@ -32,3 +32,19 @@ Renter {
 		int amenity_id PK,FK must reference an existing amenity.
 		int property_id PK,FK must reference an existing property.
 	}
+
+   ON DELETE:
+
+Viewing.renter_id
+    Renter.renter_id on DELETE restric, we should mantain history of the viewing even though the renter information is gone
+
+Viewing.property_id
+    Property.property_id, on DELETE restric, we should mantain history of the viewing even though the property information is gone
+
+Listing_Amenities.property_id
+    Property.property_id, on Delete CASCADE
+
+Listing_Amenities.amenity_id
+    Amenity.amenity_id, on Delete CASCADE
+
+Amenities, on DELETE cascade
