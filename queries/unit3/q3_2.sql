@@ -27,6 +27,24 @@ WHERE v.no_show_reason != 'Renter cancelled'
 	OR v.no_show_reason = null
 
 
+SELECT 
+ 	count (*) FILTER( -- returns 14 rows
+		WHERE no_show_reason != 'Renter cancelled' 
+			AND no_show_reason != 'Renter no show' 
+			OR no_show_reason != null
+	) as renter_no_show,
+	
+	count(*) FILTER(
+		WHERE no_show_reason = 'Renter no show' 
+	) as renter_show,
+	
+	COUNT(*) AS total_viewings
+FROM viewings;
+
+
+
+
+
 	
 -- Repaired Query   -- Returns: 156
 SELECT v.property_id,
