@@ -28,17 +28,16 @@ WHERE v.no_show_reason != 'Renter cancelled'
 
 
 	
--- Repaired Query   -- Returns: 180
+-- Repaired Query   -- Returns: 156
 SELECT v.property_id,
 	v.scheduled_at,
 	v.attended_at,
 	v.duration_min,
-	COALESCE(v.no_show_reason,'no reason provided')  --returns 14 rows
+	v.viewing_status,
+	COALESCE(v.no_show_reason,'no reason provided')  
 FROM viewings v
-WHERE v.no_show_reason 
-	NOT IN ('Renter cancelled','Renter no show')
-	OR v.no_show_reason IS NULL
-
+WHERE v.no_show_reason is null
+ 	And v.viewing_status = 'attended'
 
 
 -- Part B: The alias that did not exist yet
