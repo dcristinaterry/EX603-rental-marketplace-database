@@ -36,3 +36,14 @@ In /analysis/unit5.md, answer the following questions:
     It might be important to understand why they are not active and how what to do to have them active.  If a property the rent is too high, they can analyze to lower the rent, or if certian locations are not producing viewings then perhaps not work on with properties for that location, or detect potential issues with the viewing process. 
 5. What action could leadership take based on these findings?
     They could determine how to plan their strategy, how to target theri marketing efforts for example by comparing rental price of properties with high viewing and properties with no viewings.  Location of properties with high viewings.  Perhaps types of amenities for properties with high viewings.
+
+5.3
+Write up
+In /analysis/unit5.md, answer the following questions:
+
+Give an example of when a Cartesian product could be useful on your platform, or explain why you would not need one.
+Which join algorithms did PostgreSQL choose for your query?
+What information in the execution plan helps explain those choices?
+Why is it useful to understand the selected join algorithms?
+What changes to the data or database might make another join algorithm more appropriate?
+Support your explanation with observations from your execution plan.

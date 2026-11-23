@@ -26,11 +26,10 @@ WHERE v.no_show_reason != 'Renter cancelled'
 	AND v.no_show_reason != 'Renter no show' 
 	OR v.no_show_reason = null
 
-
+--  both totals
 SELECT 
  	count (*) FILTER( -- returns 14 rows
-		WHERE no_show_reason != 'Renter cancelled' 
-			AND no_show_reason != 'Renter no show' 
+		WHERE no_show_reason != 'Renter no show' 
 			OR no_show_reason != null
 	) as renter_no_show,
 	
@@ -43,10 +42,25 @@ FROM viewings;
 
 
 
-
-
 	
--- Repaired Query   -- Returns: 156
+-- Repaired Query   
+
+-- both totals
+SELECT
+    COUNT(*) FILTER (
+        WHERE no_show_reason = 'Renter no show'
+    ) AS renter_no_shows,
+
+    COUNT(*) FILTER (
+        WHERE no_show_reason != 'Renter no show'
+           OR no_show_reason IS NULL
+    ) AS other_or_missing_reasons,
+
+    COUNT(*) AS total_viewings
+FROM viewings;
+
+
+-- Additional analysis Returns: 156 for no_show_reason with null and having attended a viewing
 SELECT v.property_id,
 	v.scheduled_at,
 	v.attended_at,
